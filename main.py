@@ -1,9 +1,9 @@
 from matplotlib import pyplot as plt
 import torch
 
-from dataloader import create_dataloader
+from utilities.dataloader import create_dataloader
 from train import plot_losses, train_model
-from transformer import TransformerModel
+from model.transformer import TransformerModel
 
 
 def main(config, settings):

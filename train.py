@@ -2,7 +2,7 @@ import math
 from matplotlib import pyplot as plt
 import torch
 
-from dataloader import text_to_token_ids, token_ids_to_text
+from utilities.dataloader import text_to_token_ids, token_ids_to_text
 
 
 def calc_loss_batch(input_batch, target_batch, model, device):

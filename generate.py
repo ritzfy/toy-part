@@ -1,8 +1,8 @@
 import tiktoken
 import torch
 
-from dataloader import text_to_token_ids, token_ids_to_text
-from transformer import TransformerModel
+from utilities.dataloader import text_to_token_ids, token_ids_to_text
+from model.transformer import TransformerModel
 
 
 def generate(model, idx, max_new_tokens, context_size, temperature, top_k=None):
@@ -51,17 +51,16 @@ model.eval()  # disable dropout
 
 tokenizer = tiktoken.get_encoding("gpt2")
 
-start_context = """Once upon a time, there was a little girl named Lily. She loved to play outside in the park. One day,"""
+start_context = """Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day,"""
 
 encoded = text_to_token_ids(start_context, tokenizer)
-encoded_tensor = torch.tensor(encoded).unsqueeze(0)
 
 print("\nInput text:", start_context)
 
 out = generate(
     model=model,
     idx=encoded,
-    max_new_tokens=10,
+    max_new_tokens=20,
     context_size=CONFIG["ctx_len"],
     top_k=10,
     temperature=1
