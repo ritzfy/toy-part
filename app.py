@@ -45,9 +45,10 @@ st.title('Story Generator')
 
 start_context = st.text_area('Start Context', value="Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine.One day,", height=150)
 
-num_words = st.slider('Max New Words:', min_value=10, max_value=200, step=5, value=50)
-temperature = st.slider('Temperature:', min_value=0.0, max_value=2.0, step=0.1, value=1.0)
-top_k = st.slider('Top K Sampling:', min_value=0, max_value=50, step=5, value=10)
+c1, c2, c3 = st.columns(3)
+with c1: num_words = st.slider('Max New Words:', min_value=10, max_value=200, step=5, value=50)
+with c2: temperature = st.slider('Temperature:', min_value=0.0, max_value=2.0, step=0.1, value=1.0)
+with c3: top_k = st.slider('Top K Sampling:', min_value=0, max_value=50, step=5, value=10)
 
 if st.button('Generate'):
     output_text = run_generation(start_context, max_length=num_words, temperature=temperature, top_k=top_k)
